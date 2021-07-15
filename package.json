@@ -1,16 +1,15 @@
 {
-  "name": "@editorjs/image",
-  "version": "2.6.0",
+  "name": "image-wdf",
+  "version": "0.0.1",
   "keywords": [
-    "codex editor",
     "tool",
     "image",
     "editor.js",
     "editorjs"
   ],
-  "description": "Image Tool for Editor.js",
+  "description": "Image Tool for Editor.js with link url",
   "license": "MIT",
-  "repository": "https://github.com/editor-js/image",
+  "repository": "https://github.com/wedressfair/image-wdf",
   "main": "./dist/bundle.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -20,8 +19,7 @@
     "lint:fix": "eslint src/ --ext .js --fix"
   },
   "author": {
-    "name": "CodeX",
-    "email": "team@ifmo.su"
+    "name": "WeDressFair, based on CodeX work"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
