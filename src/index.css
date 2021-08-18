@@ -85,6 +85,28 @@
     }
   }
 
+  &__image-endpoint {
+    margin-top: 10px;
+
+    &[contentEditable="true"][data-placeholder]::before {
+      position: absolute !important;
+      content: attr(data-placeholder);
+      color: #707684;
+      font-weight: normal;
+      display: none;
+    }
+
+    &[contentEditable="true"][data-placeholder]:empty {
+      &::before {
+        display: block;
+      }
+
+      &:focus::before {
+        display: none;
+      }
+    }
+  }
+
   &--empty {
     ^&__image {
       display: none;

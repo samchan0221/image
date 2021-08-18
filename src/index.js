@@ -35,6 +35,7 @@
  * @description Image Tool's input and output data format
  * @property {string} caption — image caption
  * @property {string} linkUrl — image url destination
+ * @property {string} imageEndpoint — root endpoint of the image
  * @property {boolean} withBorder - should image be rendered with border
  * @property {boolean} withBackground - should image be rendered with background
  * @property {boolean} stretched - should image be stretched to full width of container
@@ -58,6 +59,7 @@ import Uploader from './uploader';
  * @property {string} field - field name for uploaded image
  * @property {string} types - available mime-types
  * @property {string} captionPlaceholder - placeholder for Caption field
+ * @property {string} imageEndpointPlaceholder - placeholder for ImageEndpoint field
  * @property {string} linkUrlPlaceholder - placeholder for LinkUrl field
  * @property {object} additionalRequestData - any data to send with requests
  * @property {object} additionalRequestHeaders - allows to pass custom headers with Request
@@ -124,6 +126,7 @@ export default class ImageTool {
         config.captionPlaceholder || 'Caption'
       ),
       linkUrlPlaceholder: 'Link Url',
+      imageEndpointPlaceholder: 'Image Endpoint',
       buttonContent: config.buttonContent || '',
       uploader: config.uploader || undefined,
       actions: config.actions || [],
@@ -191,9 +194,11 @@ export default class ImageTool {
   save() {
     const caption = this.ui.nodes.caption;
     const linkUrl = this.ui.nodes.linkUrl;
+    const imageEndpoint = this.ui.nodes.imageEndpoint;
 
     this._data.caption = caption.innerHTML;
     this._data.linkUrl = linkUrl.innerHTML;
+    this._data.imageEndpoint = imageEndpoint.innerHTML;
 
     return this.data;
   }
@@ -309,6 +314,9 @@ export default class ImageTool {
 
     this._data.linkUrl = data.linkUrl || '';
     this.ui.fillLinkUrl(this._data.linkUrl);
+
+    this._data.imageEndpoint = data.imageEndpoint || '';
+    this.ui.fillImageEndpoint(this._data.imageEndpoint);
 
     Tunes.tunes.forEach(({ name: tune }) => {
       const value =

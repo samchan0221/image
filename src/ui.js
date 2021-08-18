@@ -31,6 +31,9 @@ export default class Ui {
       linkUrl: make('div', [this.CSS.input, this.CSS.linkUrl], {
         contentEditable: !this.readOnly,
       }),
+      imageEndpoint: make('div', [this.CSS.input, this.CSS.imageEndpoint], {
+        contentEditable: !this.readOnly,
+      }),
     };
 
     /**
@@ -45,10 +48,12 @@ export default class Ui {
      */
     this.nodes.caption.dataset.placeholder = this.config.captionPlaceholder;
     this.nodes.linkUrl.dataset.placeholder = this.config.linkUrlPlaceholder;
+    this.nodes.imageEndpoint.dataset.placeholder = this.config.imageEndpointPlaceholder;
     this.nodes.imageContainer.appendChild(this.nodes.imagePreloader);
     this.nodes.wrapper.appendChild(this.nodes.imageContainer);
     this.nodes.wrapper.appendChild(this.nodes.caption);
     this.nodes.wrapper.appendChild(this.nodes.linkUrl);
+    this.nodes.wrapper.appendChild(this.nodes.imageEndpoint);
     this.nodes.wrapper.appendChild(this.nodes.fileButton);
   }
 
@@ -73,6 +78,7 @@ export default class Ui {
       imageEl: 'image-tool__image-picture',
       caption: 'image-tool__caption',
       linkUrl: 'image-tool__link-url',
+      imageEndpoint: 'image-tool__image-endpoint',
     };
   }
 
@@ -241,6 +247,18 @@ export default class Ui {
   fillLinkUrl(text) {
     if (this.nodes.linkUrl) {
       this.nodes.linkUrl.innerHTML = text;
+    }
+  }
+
+  /**
+   * Shows imageEndpoint input
+   *
+   * @param {string} text - imageEndpoint text
+   * @returns {void}
+   */
+  fillImageEndpoint(text) {
+    if (this.nodes.imageEndpoint) {
+      this.nodes.imageEndpoint.innerHTML = text;
     }
   }
 
