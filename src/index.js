@@ -342,8 +342,20 @@ export default class ImageTool {
   set image(file) {
     this._data.file = file || {};
 
-    if (file && file.url) {
-      this.ui.fillImage(file.url);
+    if (file) {
+      if (!this.config.imgDir && file.url) {
+        this.ui.fillImage(file.url);
+
+        return;
+      }
+      if (file.filename && this.config.imgDir) {
+        const replace = new RegExp("/" + "{1,}", "g");
+        const concated = [this.config.imgDir, file.filename]
+          .join("/")
+          .replace(replace, "/");
+
+        this.ui.fillImage(concated);
+      }
     }
   }
 
