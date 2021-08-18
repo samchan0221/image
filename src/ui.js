@@ -1,4 +1,4 @@
-import buttonIcon from './svg/button-icon.svg';
+import buttonIcon from "./svg/button-icon.svg";
 
 /**
  * Class for working with UI:
@@ -20,18 +20,18 @@ export default class Ui {
     this.onSelectFile = onSelectFile;
     this.readOnly = readOnly;
     this.nodes = {
-      wrapper: make('div', [this.CSS.baseClass, this.CSS.wrapper]),
-      imageContainer: make('div', [this.CSS.imageContainer]),
+      wrapper: make("div", [this.CSS.baseClass, this.CSS.wrapper]),
+      imageContainer: make("div", [this.CSS.imageContainer]),
       fileButton: this.createFileButton(),
       imageEl: undefined,
-      imagePreloader: make('div', this.CSS.imagePreloader),
-      caption: make('div', [this.CSS.input, this.CSS.caption], {
+      imagePreloader: make("div", this.CSS.imagePreloader),
+      caption: make("div", [this.CSS.input, this.CSS.caption], {
         contentEditable: !this.readOnly,
       }),
-      linkUrl: make('div', [this.CSS.input, this.CSS.linkUrl], {
+      linkUrl: make("div", [this.CSS.input, this.CSS.linkUrl], {
         contentEditable: !this.readOnly,
       }),
-      imageEndpoint: make('div', [this.CSS.input, this.CSS.imageEndpoint], {
+      imageEndpoint: make("div", [this.CSS.input, this.CSS.imageEndpoint], {
         contentEditable: !this.readOnly,
       }),
     };
@@ -48,7 +48,8 @@ export default class Ui {
      */
     this.nodes.caption.dataset.placeholder = this.config.captionPlaceholder;
     this.nodes.linkUrl.dataset.placeholder = this.config.linkUrlPlaceholder;
-    this.nodes.imageEndpoint.dataset.placeholder = this.config.imageEndpointPlaceholder;
+    this.nodes.imageEndpoint.dataset.placeholder =
+      this.config.imageEndpointPlaceholder;
     this.nodes.imageContainer.appendChild(this.nodes.imagePreloader);
     this.nodes.wrapper.appendChild(this.nodes.imageContainer);
     this.nodes.wrapper.appendChild(this.nodes.caption);
@@ -72,13 +73,13 @@ export default class Ui {
       /**
        * Tool's classes
        */
-      wrapper: 'image-tool',
-      imageContainer: 'image-tool__image',
-      imagePreloader: 'image-tool__image-preloader',
-      imageEl: 'image-tool__image-picture',
-      caption: 'image-tool__caption',
-      linkUrl: 'image-tool__link-url',
-      imageEndpoint: 'image-tool__image-endpoint',
+      wrapper: "image-tool",
+      imageContainer: "image-tool__image",
+      imagePreloader: "image-tool__image-preloader",
+      imageEl: "image-tool__image-picture",
+      caption: "image-tool__caption",
+      linkUrl: "image-tool__link-url",
+      imageEndpoint: "image-tool__image-endpoint",
     };
   }
 
@@ -92,9 +93,9 @@ export default class Ui {
    */
   static get status() {
     return {
-      EMPTY: 'empty',
-      UPLOADING: 'loading',
-      FILLED: 'filled',
+      EMPTY: "empty",
+      UPLOADING: "loading",
+      FILLED: "filled",
     };
   }
 
@@ -120,13 +121,13 @@ export default class Ui {
    * @returns {Element}
    */
   createFileButton() {
-    const button = make('div', [this.CSS.button]);
+    const button = make("div", [this.CSS.button]);
 
     button.innerHTML =
       this.config.buttonContent ||
-      `${buttonIcon} ${this.api.i18n.t('Select an Image')}`;
+      `${buttonIcon} ${this.api.i18n.t("Select an Image")}`;
 
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
       this.onSelectFile();
     });
 
@@ -151,7 +152,7 @@ export default class Ui {
    * @returns {void}
    */
   hidePreloader() {
-    this.nodes.imagePreloader.style.backgroundImage = '';
+    this.nodes.imagePreloader.style.backgroundImage = "";
     this.toggleStatus(Ui.status.EMPTY);
   }
 
@@ -165,7 +166,7 @@ export default class Ui {
     /**
      * Check for a source extension to compose element correctly: video tag for mp4, img — for others
      */
-    const tag = /\.mp4$/.test(url) ? 'VIDEO' : 'IMG';
+    const tag = /\.mp4$/.test(url) ? "VIDEO" : "IMG";
 
     const attributes = {
       src: url,
@@ -178,12 +179,12 @@ export default class Ui {
      *
      * @type {string}
      */
-    let eventName = 'load';
+    let eventName = "load";
 
     /**
      * Update attributes and eventName if source is a mp4 video
      */
-    if (tag === 'VIDEO') {
+    if (tag === "VIDEO") {
       /**
        * Add attributes for playing muted mp4 as a gif
        *
@@ -199,7 +200,7 @@ export default class Ui {
        *
        * @type {string}
        */
-      eventName = 'loadeddata';
+      eventName = "loadeddata";
     }
 
     /**
@@ -219,7 +220,7 @@ export default class Ui {
        * Preloader does not exists on first rendering with presaved data
        */
       if (this.nodes.imagePreloader) {
-        this.nodes.imagePreloader.style.backgroundImage = '';
+        this.nodes.imagePreloader.style.backgroundImage = "";
       }
     });
 

@@ -1,6 +1,6 @@
 {
   "name": "image-samchan",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "keywords": [
     "tool",
     "image",
@@ -29,7 +29,7 @@
     "@codexteam/ajax": "^4.2.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^3.5.2",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-config-codex": "^1.3.3",
     "eslint-loader": "^4.0.0",
     "formidable": "^1.2.1",
