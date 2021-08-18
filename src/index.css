@@ -127,6 +127,13 @@
     }
   }
 
+  &--empty,
+  &--loading {
+    ^&__imageEndpoint {
+      display: none;
+    }
+  }
+
   &--filled {
     .cdx-button {
       display: none;
