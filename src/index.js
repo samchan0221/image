@@ -351,7 +351,9 @@ export default class ImageTool {
     this._data.file = file || {};
 
     if (file && file.url) {
-      this.ui.fillImage(file.url);
+      const url = new URL(file.url, file.base);
+
+      this.ui.fillImage(url.toString());
     }
   }
 
